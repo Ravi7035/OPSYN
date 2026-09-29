@@ -285,51 +285,6 @@ memory. No speedup/accuracy improvement is claimed.
 
 ---
 
-## 60-Second Demo
-
-**Scene 1 — Incident.** Inject **DB pool exhaustion**: 5xx ↑, DB
-connections 100/100, DB latency ↑.
-
-**Scene 2 — Reasoning.** Watch Recall → Hypothesize → Investigate; Hindsight
-memory cards appear (empty on a truly fresh bank, otherwise prior experience).
-
-**Scene 3 — Action.** `clear_db_connections` executes.
-
-**Scene 4 — Verification.** Before/after: 5xx ~25% → ~0.2%. System recovered.
-
-**Scene 5 — Learning.** Learning card: successful action, verification,
-lesson, "Saved to organizational memory".
-
-**Scene 6 — Second incident.** Inject a similar fault. The comparison panel
-shows Incident 1's recalled ids and lesson beside current evidence, then
-decision → resolution. Session strip counts up: incidents handled, experiences
-recalled, stored.
-
-What this proves: **OPSYN remembers what happened and uses that experience
-during the next incident.** (Optional second arc: DB-pool memory followed by
-Bad Deployment shows memory being overruled by current evidence.)
-
----
-
-## Screenshots / UI
-
-### TODO: capture screenshots during a live demo run
-
-Suggested captures: (1) Command Center mid-investigation with memory cards,
-(2) experience-vs-current comparison, (3) verification before/after +
-learning card, (4) second incident with recalled ids + session strip. No
-placeholder image paths are committed — screenshots will be added from a real
-run, not mocked.
-
-The Command Center (`frontend/src/`) as implemented: `LiveIncident.tsx`
-(command-center view: header, metrics, logs, stepper, memories, comparison,
-hypotheses, decision, remediations, execution, verification, learning,
-session strip, reset), `IncidentDetail.tsx` (persisted record + full trace),
-`pages.tsx` (Overview/stats, Incidents history, Memory browser),
-`SimulateModal.tsx` (operator fault picker — diagnosis never sent to agent),
-`LoopCycle.tsx` (learning-loop visual), `lib/api.ts` (typed backend client).
-
----
 
 ## API Documentation
 
