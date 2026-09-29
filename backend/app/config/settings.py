@@ -40,6 +40,12 @@ class Settings(BaseSettings):
         alias="INCIDENT_STORE_PATH",
     )
 
+    # Public URL(s) of the deployed frontend, e.g.
+    # FRONTEND_URL=https://opsyn.vercel.app
+    # Comma-separated if more than one. Empty = localhost only (local dev).
+    # Browser requests from any other origin are rejected; never use "*".
+    frontend_url: str = Field(default="", alias="FRONTEND_URL")
+
     reasoning_model: str = Field(default="deterministic", alias="REASONING_MODEL")
 
     groq_api_key: str = Field(default="", alias="GROQ_API_KEY")
@@ -57,6 +63,17 @@ class Settings(BaseSettings):
         default=4096, alias="GROQ_MAX_COMPLETION_TOKENS"
     )
 
+    gemini_api_key: str = Field(default="", alias="GEMINI_API_KEY")
+    gemini_model: str = Field(
+        default="gemini-3.5-flash",
+        alias="GEMINI_MODEL",
+    )
+    gemini_timeout_s: float = Field(default=60.0, alias="GEMINI_TIMEOUT_S")
+    gemini_max_retries: int = Field(default=2, alias="GEMINI_MAX_RETRIES")
+    gemini_max_output_tokens: int = Field(
+        default=4096, alias="GEMINI_MAX_OUTPUT_TOKENS"
+    )
+
     @property
     def is_hindsight_configured(self) -> bool:
         return bool(self.hindsight_api_key.strip())
@@ -64,6 +81,10 @@ class Settings(BaseSettings):
     @property
     def is_groq_configured(self) -> bool:
         return bool(self.groq_api_key.strip())
+
+    @property
+    def is_gemini_configured(self) -> bool:
+        return bool(self.gemini_api_key.strip())
 
 
 @lru_cache

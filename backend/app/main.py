@@ -17,10 +17,22 @@ app = FastAPI(
     version="0.1.0",
 )
 
-# Dev-only browser access for the local OPSYN frontend (Vite dev server).
-# Restricts origins to localhost loopback; never use "*" in production.
+# Browser access for the OPSYN frontend (local Vite dev server + the
+# deployed production URL configured via FRONTEND_URL). Origins are an
+# explicit allow-list plus localhost loopback; never use "*" in production.
+def _allowed_frontend_origins() -> list[str]:
+    raw = settings.frontend_url or ""
+    origins = []
+    for entry in raw.split(","):
+        origin = entry.strip().rstrip("/")
+        if origin and origin.startswith(("http://", "https://")):
+            origins.append(origin)
+    return origins
+
+
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=_allowed_frontend_origins(),
     allow_origin_regex=r"https?://(localhost|127\.0\.0\.1)(:\d+)?",
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Content-Type"],

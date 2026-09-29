@@ -44,8 +44,9 @@ def get_agent_tools() -> "AgentTools":
 def get_reasoning_model() -> "ReasoningModel":
     """Select the reasoning backend from REASONING_MODEL.
 
-    'deterministic' (default) needs no credentials. 'llm' requires
-    GROQ_API_KEY and fails loudly without it — never silently falls back.
+    'deterministic' (default) needs no credentials. 'llm' selects Groq and
+    'gemini' selects Gemini; both require their API key and fail loudly
+    without it — never silently falls back.
     """
     from app.services.reasoning_model import ReasoningModel
 
@@ -68,10 +69,21 @@ def get_reasoning_model() -> "ReasoningModel":
                 status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
                 detail=str(exc),
             ) from exc
+    if choice == "gemini":
+        from app.services.gemini_reasoning_model import GeminiReasoningModel
+        from app.services.llm_reasoning_model import LLMNotConfiguredError
+
+        try:
+            return GeminiReasoningModel.from_settings(settings)
+        except LLMNotConfiguredError as exc:
+            raise HTTPException(
+                status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+                detail=str(exc),
+            ) from exc
     raise HTTPException(
         status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
         detail=f"Unknown REASONING_MODEL: {settings.reasoning_model!r} "
-        "(expected 'deterministic' or 'llm').",
+        "(expected 'deterministic', 'llm', or 'gemini').",
     )
 
 
