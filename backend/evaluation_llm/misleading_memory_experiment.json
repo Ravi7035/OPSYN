@@ -1,0 +1,312 @@
+{
+  "history_scenario": "db_pool_exhaustion",
+  "current_scenario": "bad_deployment",
+  "recalled_memory_ids": [
+    "eval-misleading-history-00"
+  ],
+  "db_hypothesis_status": null,
+  "selected_hypothesis": null,
+  "final_action": null,
+  "resolved": false,
+  "investigation_steps": 4,
+  "result": {
+    "scenario": "bad_deployment",
+    "mode": "misleading-current",
+    "resolved": false,
+    "outcome": "error",
+    "investigation_steps": 4,
+    "actions_count": 0,
+    "wrong_actions": 0,
+    "actions_taken": [],
+    "hypotheses_considered": 0,
+    "hypotheses_supported": 0,
+    "hypotheses_rejected": 0,
+    "final_action": null,
+    "verification_improved": null,
+    "hindsight_memories_recalled": 1,
+    "recalled_memory_ids": [
+      "eval-misleading-history-00"
+    ],
+    "hindsight_retained": false,
+    "hindsight_empty_at_start": false,
+    "llm_calls": 0,
+    "llm_latency_ms": 0.0,
+    "llm_errors": 3,
+    "llm_retries": 2,
+    "model_name": "openai/gpt-oss-120b",
+    "reasoning_effort": "high",
+    "duration_seconds": 1.016,
+    "lesson": "Evaluation recorded a reasoning failure: LLMReasoningError: Groq call failed: Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-120b` in organization `org_01m2ptay2aeej8e7wjjr0tmvb6` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 197865, Requested 6050. Please try again in 28m11.28s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}",
+    "incident": {
+      "incident_id": "eval-misleading-current-01",
+      "service": "payment-api",
+      "environment": "production",
+      "severity": "P2",
+      "timestamp": "2026-09-28T11:47:41.023265Z",
+      "symptoms": [
+        "OPSYN misleading-current evaluation"
+      ],
+      "logs": [],
+      "metrics": {},
+      "root_cause": null,
+      "actions_taken": [],
+      "resolution": null,
+      "resolution_time_minutes": null,
+      "customer_impact": null,
+      "lesson": null,
+      "source": "simulator",
+      "source_case_id": null,
+      "fault_type": null,
+      "time_window_start": null,
+      "time_window_end": null,
+      "metric_summaries": {},
+      "trace_summary": null,
+      "evidence": [
+        {
+          "signal": "service_status",
+          "value": "degraded",
+          "observed_at": "2026-09-28T11:47:41.023412Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections",
+          "value": "20/100",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms",
+          "value": "18",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate",
+          "value": "18.0",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "cpu",
+          "value": "55.0",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "memory",
+          "value": "52.0",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "redis_health",
+          "value": "healthy",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "dependency_latency_ms",
+          "value": "35",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "request_rate",
+          "value": "120",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "queue_depth",
+          "value": "5",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "disk_utilization",
+          "value": "42",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_version",
+          "value": "1.5.0",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_status",
+          "value": "just_deployed",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "p95_latency_ms",
+          "value": "1800",
+          "observed_at": "2026-09-28T11:47:41.023523Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.deployment",
+          "value": "{'version': '1.5.0', 'status': 'just_deployed'}",
+          "observed_at": "2026-09-28T11:47:41.023658Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.db_pool",
+          "value": "{'used': 20, 'limit': 100, 'status': 'ok'}",
+          "observed_at": "2026-09-28T11:47:41.023658Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.redis",
+          "value": "{'status': 'healthy'}",
+          "observed_at": "2026-09-28T11:47:41.023658Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.queue",
+          "value": "{'depth': 5, 'status': 'ok'}",
+          "observed_at": "2026-09-28T11:47:41.023658Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.disk",
+          "value": "{'utilization_percent': 42, 'status': 'ok'}",
+          "observed_at": "2026-09-28T11:47:41.023658Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.status",
+          "value": "degraded",
+          "observed_at": "2026-09-28T11:47:41.023658Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:06+00:00 ERROR unhandled exception processing payment (v1.5.0)",
+          "observed_at": "2026-09-28T11:47:41.023760Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:07+00:00 ERROR transaction request returned 500",
+          "observed_at": "2026-09-28T11:47:41.023760Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:08+00:00 WARN elevated error rate detected",
+          "observed_at": "2026-09-28T11:47:41.023760Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        }
+      ],
+      "hypotheses": [],
+      "investigation": [
+        {
+          "step_id": "step-1",
+          "started_at": "2026-09-28T11:47:41.023434Z",
+          "tool": "get_health",
+          "target": null,
+          "result_summary": "service status=degraded",
+          "result_refs": [
+            "service_status"
+          ]
+        },
+        {
+          "step_id": "step-2",
+          "started_at": "2026-09-28T11:47:41.023588Z",
+          "tool": "get_metrics",
+          "target": null,
+          "result_summary": "5xx=18.0 cpu=55.0 mem=52.0 db=20/100 dblat=18ms",
+          "result_refs": [
+            "db_connections",
+            "db_latency_ms",
+            "http_5xx_rate",
+            "cpu",
+            "memory",
+            "redis_health",
+            "dependency_latency_ms",
+            "request_rate"
+          ]
+        },
+        {
+          "step_id": "step-3",
+          "started_at": "2026-09-28T11:47:41.023703Z",
+          "tool": "get_state",
+          "target": null,
+          "result_summary": "state=degraded",
+          "result_refs": [
+            "state.deployment",
+            "state.db_pool",
+            "state.redis",
+            "state.queue",
+            "state.disk",
+            "state.status"
+          ]
+        },
+        {
+          "step_id": "step-4",
+          "started_at": "2026-09-28T11:47:41.023784Z",
+          "tool": "get_logs",
+          "target": null,
+          "result_summary": "8 log lines",
+          "result_refs": [
+            "log",
+            "log",
+            "log"
+          ]
+        }
+      ],
+      "actions": [],
+      "verification": null,
+      "learning": null
+    }
+  }
+}

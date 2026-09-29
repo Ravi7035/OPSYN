@@ -1,0 +1,173 @@
+{
+  "generated_at": "2026-09-28T07:58:15.352416Z",
+  "comparisons": [
+    {
+      "scenario": "db_pool_exhaustion",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "clear_db_connections",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "clear_db_connections",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "bad_deployment",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "rollback_deployment",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "rollback_deployment",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "memory_leak",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 6,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restart_service",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 6,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restart_service",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "redis_failure",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restart_redis",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restart_redis",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "dependency_timeout",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restore_dependency",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restore_dependency",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "traffic_spike",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "scale_service",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "scale_service",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "cache_stampede",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restart_service",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "restart_service",
+        "hindsight_memories_recalled": 3
+      }
+    },
+    {
+      "scenario": "disk_exhaustion",
+      "cold": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "free_disk",
+        "hindsight_memories_recalled": 0
+      },
+      "experienced": {
+        "resolved": true,
+        "investigation_steps": 5,
+        "actions_count": 1,
+        "wrong_actions": 0,
+        "final_action": "free_disk",
+        "hindsight_memories_recalled": 3
+      }
+    }
+  ],
+  "cold_totals": {
+    "total_scenarios": 8.0,
+    "resolved_scenarios": 8.0,
+    "average_investigation_steps": 5.12,
+    "average_actions": 1.0,
+    "total_wrong_actions": 0.0,
+    "average_recalled_memories": 0.0
+  },
+  "experienced_totals": {
+    "total_scenarios": 8.0,
+    "resolved_scenarios": 8.0,
+    "average_investigation_steps": 5.12,
+    "average_actions": 1.0,
+    "total_wrong_actions": 0.0,
+    "average_recalled_memories": 3.0
+  }
+}

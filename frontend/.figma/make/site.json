@@ -1,0 +1,10 @@
+{
+  "description": "Enables SRE and DevOps teams to resolve incidents by leveraging organizational memory to investigate, compare, and learn from past system behaviors.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

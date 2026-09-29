@@ -1,0 +1,9 @@
+# OPSYN root gitignore
+# Never commit large raw/selected telemetry dumps to Git.
+data/rcaeval/raw/
+data/rcaeval/selected/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/

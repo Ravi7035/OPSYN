@@ -1,0 +1,1202 @@
+{
+  "stage1": {
+    "scenario": "db_pool_exhaustion",
+    "mode": "learning-stage1",
+    "resolved": true,
+    "outcome": "resolved",
+    "investigation_steps": 5,
+    "actions_count": 1,
+    "wrong_actions": 0,
+    "actions_taken": [
+      "clear_db_connections"
+    ],
+    "hypotheses_considered": 8,
+    "hypotheses_supported": 1,
+    "hypotheses_rejected": 7,
+    "final_action": "clear_db_connections",
+    "verification_improved": true,
+    "hindsight_memories_recalled": 0,
+    "recalled_memory_ids": [],
+    "hindsight_retained": true,
+    "hindsight_empty_at_start": true,
+    "duration_seconds": 0.002,
+    "lesson": "service_status=degraded; db_connections=100/100; db_latency_ms=900; http_5xx_rate=25.0; cpu=45.0; memory=47.8; redis_health=healthy; dependency_latency_ms=35 indicated DB pool exhaustion. Executing clear_db_connections restored service health (5xx < 1%, status healthy).",
+    "incident": {
+      "incident_id": "eval-learning-stage1-00",
+      "service": "payment-api",
+      "environment": "production",
+      "severity": "P2",
+      "timestamp": "2026-09-28T07:58:15.378289Z",
+      "symptoms": [
+        "OPSYN learning-stage1 evaluation"
+      ],
+      "logs": [],
+      "metrics": {},
+      "root_cause": null,
+      "actions_taken": [],
+      "resolution": null,
+      "resolution_time_minutes": null,
+      "customer_impact": null,
+      "lesson": null,
+      "source": "simulator",
+      "source_case_id": null,
+      "fault_type": null,
+      "time_window_start": null,
+      "time_window_end": null,
+      "metric_summaries": {},
+      "trace_summary": null,
+      "evidence": [
+        {
+          "signal": "service_status",
+          "value": "degraded",
+          "observed_at": "2026-09-28T07:58:15.378402Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections",
+          "value": "100/100",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms",
+          "value": "900",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate",
+          "value": "25.0",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "cpu",
+          "value": "45.0",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "memory",
+          "value": "47.8",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "redis_health",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "dependency_latency_ms",
+          "value": "35",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "request_rate",
+          "value": "120",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "queue_depth",
+          "value": "60",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "disk_utilization",
+          "value": "42",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_version",
+          "value": "1.4.2",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_status",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "p95_latency_ms",
+          "value": "2400",
+          "observed_at": "2026-09-28T07:58:15.378485Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.deployment",
+          "value": "{'version': '1.4.2', 'status': 'healthy'}",
+          "observed_at": "2026-09-28T07:58:15.378594Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.db_pool",
+          "value": "{'used': 100, 'limit': 100, 'status': 'saturated'}",
+          "observed_at": "2026-09-28T07:58:15.378594Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.redis",
+          "value": "{'status': 'healthy'}",
+          "observed_at": "2026-09-28T07:58:15.378594Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.queue",
+          "value": "{'depth': 60, 'status': 'backlogged'}",
+          "observed_at": "2026-09-28T07:58:15.378594Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.disk",
+          "value": "{'utilization_percent': 42, 'status': 'ok'}",
+          "observed_at": "2026-09-28T07:58:15.378594Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.status",
+          "value": "degraded",
+          "observed_at": "2026-09-28T07:58:15.378594Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:05+00:00 ERROR payment request failed: database connection unavailable",
+          "observed_at": "2026-09-28T07:58:15.378700Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:06+00:00 WARN connection acquisition exceeded timeout (850ms)",
+          "observed_at": "2026-09-28T07:58:15.378700Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:07+00:00 WARN db pool saturated: 100/100 connections in use",
+          "observed_at": "2026-09-28T07:58:15.378700Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:08+00:00 ERROR transaction request returned 503",
+          "observed_at": "2026-09-28T07:58:15.378700Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections",
+          "value": "100/100",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms",
+          "value": "900",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate",
+          "value": "25.0",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "cpu",
+          "value": "45.0",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "memory",
+          "value": "47.8",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "redis_health",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "dependency_latency_ms",
+          "value": "35",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "request_rate",
+          "value": "120",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "queue_depth",
+          "value": "60",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "disk_utilization",
+          "value": "42",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_version",
+          "value": "1.4.2",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_status",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "p95_latency_ms",
+          "value": "2400",
+          "observed_at": "2026-09-28T07:58:15.379069Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "service_status_post_action",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.379463Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate_post_action",
+          "value": "0.2",
+          "observed_at": "2026-09-28T07:58:15.379463Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections_post_action",
+          "value": "20",
+          "observed_at": "2026-09-28T07:58:15.379463Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms_post_action",
+          "value": "18",
+          "observed_at": "2026-09-28T07:58:15.379463Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        }
+      ],
+      "hypotheses": [
+        {
+          "statement": "DB pool exhaustion",
+          "status": "selected",
+          "confidence": 0.85,
+          "supporting": [
+            "db_connections saturated (100/100)",
+            "db_latency very high (900ms)",
+            "5xx elevated (25.0%)"
+          ],
+          "contradicting": []
+        },
+        {
+          "statement": "cache stampede",
+          "status": "rejected",
+          "confidence": 0.15,
+          "supporting": [
+            "DB connections very high (100/100)",
+            "DB latency high (900ms)"
+          ],
+          "contradicting": [
+            "cache healthy"
+          ]
+        },
+        {
+          "statement": "bad deployment",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [
+            "5xx elevated (25.0%)",
+            "cpu not unusually high (45.0%)"
+          ],
+          "contradicting": [
+            "no recent deployment (v1.4.2 healthy)"
+          ]
+        },
+        {
+          "statement": "memory leak",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "memory normal (47.8%)"
+          ]
+        },
+        {
+          "statement": "redis failure",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "redis healthy",
+            "DB nearly saturated, less typical of pure redis failure"
+          ]
+        },
+        {
+          "statement": "dependency timeout",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "dependency latency normal (35ms)"
+          ]
+        },
+        {
+          "statement": "traffic spike",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "request rate normal (120)",
+            "cpu normal (45.0%)"
+          ]
+        },
+        {
+          "statement": "disk exhaustion",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "disk utilization normal (42.0%)"
+          ]
+        }
+      ],
+      "investigation": [
+        {
+          "step_id": "step-1",
+          "started_at": "2026-09-28T07:58:15.378418Z",
+          "tool": "get_health",
+          "target": null,
+          "result_summary": "service status=degraded",
+          "result_refs": [
+            "service_status"
+          ]
+        },
+        {
+          "step_id": "step-2",
+          "started_at": "2026-09-28T07:58:15.378540Z",
+          "tool": "get_metrics",
+          "target": null,
+          "result_summary": "5xx=25.0 cpu=45.0 mem=47.8 db=100/100 dblat=900ms",
+          "result_refs": [
+            "db_connections",
+            "db_latency_ms",
+            "http_5xx_rate",
+            "cpu",
+            "memory",
+            "redis_health",
+            "dependency_latency_ms",
+            "request_rate"
+          ]
+        },
+        {
+          "step_id": "step-3",
+          "started_at": "2026-09-28T07:58:15.378636Z",
+          "tool": "get_state",
+          "target": null,
+          "result_summary": "state=degraded",
+          "result_refs": [
+            "state.deployment",
+            "state.db_pool",
+            "state.redis",
+            "state.queue",
+            "state.disk",
+            "state.status"
+          ]
+        },
+        {
+          "step_id": "step-4",
+          "started_at": "2026-09-28T07:58:15.378723Z",
+          "tool": "get_logs",
+          "target": null,
+          "result_summary": "8 log lines",
+          "result_refs": [
+            "log",
+            "log",
+            "log",
+            "log"
+          ]
+        },
+        {
+          "step_id": "step-5",
+          "started_at": "2026-09-28T07:58:15.379126Z",
+          "tool": "get_snapshot",
+          "target": null,
+          "result_summary": "snapshot captured, 5xx=25.0",
+          "result_refs": [
+            "db_connections",
+            "db_latency_ms",
+            "http_5xx_rate",
+            "cpu",
+            "memory",
+            "redis_health",
+            "dependency_latency_ms",
+            "request_rate"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "action_id": "action-1",
+          "action": "clear_db_connections",
+          "target": "payment-api",
+          "parameters": {},
+          "status": "executed",
+          "executed_at": "2026-09-28T07:58:15.379494Z",
+          "result": "database connection pool recovered | 5xx 25.0->0.2 | resolved"
+        }
+      ],
+      "verification": {
+        "metrics_before": {
+          "cpu": 45.0,
+          "memory": 47.8,
+          "db_connections": 100.0,
+          "db_latency_ms": 900.0,
+          "http_5xx_rate": 25.0,
+          "p50_latency_ms": 600.0,
+          "p95_latency_ms": 2400.0,
+          "dependency_latency_ms": 35.0,
+          "request_rate": 120.0,
+          "queue_depth": 60.0,
+          "disk_utilization": 42.0
+        },
+        "metrics_after": {
+          "cpu": 35.2,
+          "memory": 47.8,
+          "db_connections": 20.0,
+          "db_latency_ms": 18.0,
+          "http_5xx_rate": 0.2,
+          "p50_latency_ms": 80.0,
+          "p95_latency_ms": 125.0,
+          "dependency_latency_ms": 35.0,
+          "request_rate": 120.0,
+          "queue_depth": 5.0,
+          "disk_utilization": 42.0
+        },
+        "improved": true,
+        "status": "resolved"
+      },
+      "learning": {
+        "outcome": "resolved",
+        "successful_actions": [
+          "clear_db_connections"
+        ],
+        "failed_actions": [],
+        "lesson": "service_status=degraded; db_connections=100/100; db_latency_ms=900; http_5xx_rate=25.0; cpu=45.0; memory=47.8; redis_health=healthy; dependency_latency_ms=35 indicated DB pool exhaustion. Executing clear_db_connections restored service health (5xx < 1%, status healthy).",
+        "suitable_for_hindsight": true
+      }
+    }
+  },
+  "stage2": {
+    "scenario": "cache_stampede",
+    "mode": "learning-stage2",
+    "resolved": true,
+    "outcome": "resolved",
+    "investigation_steps": 5,
+    "actions_count": 1,
+    "wrong_actions": 0,
+    "actions_taken": [
+      "restart_service"
+    ],
+    "hypotheses_considered": 8,
+    "hypotheses_supported": 2,
+    "hypotheses_rejected": 5,
+    "final_action": "restart_service",
+    "verification_improved": true,
+    "hindsight_memories_recalled": 1,
+    "recalled_memory_ids": [
+      "eval-learning-stage1-00"
+    ],
+    "hindsight_retained": true,
+    "hindsight_empty_at_start": false,
+    "duration_seconds": 0.002,
+    "lesson": "service_status=degraded; db_connections=96/100; db_latency_ms=640; http_5xx_rate=12.0; cpu=84.0; memory=70.0; redis_health=degraded; dependency_latency_ms=35 indicated cache stampede. Executing restart_service restored service health (5xx < 1%, status healthy).",
+    "incident": {
+      "incident_id": "eval-learning-stage2-01",
+      "service": "payment-api",
+      "environment": "production",
+      "severity": "P2",
+      "timestamp": "2026-09-28T07:58:15.380768Z",
+      "symptoms": [
+        "OPSYN learning-stage2 evaluation"
+      ],
+      "logs": [],
+      "metrics": {},
+      "root_cause": null,
+      "actions_taken": [],
+      "resolution": null,
+      "resolution_time_minutes": null,
+      "customer_impact": null,
+      "lesson": null,
+      "source": "simulator",
+      "source_case_id": null,
+      "fault_type": null,
+      "time_window_start": null,
+      "time_window_end": null,
+      "metric_summaries": {},
+      "trace_summary": null,
+      "evidence": [
+        {
+          "signal": "service_status",
+          "value": "degraded",
+          "observed_at": "2026-09-28T07:58:15.380829Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections",
+          "value": "96/100",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms",
+          "value": "640",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate",
+          "value": "12.0",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "cpu",
+          "value": "84.0",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "memory",
+          "value": "70.0",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "redis_health",
+          "value": "degraded",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "dependency_latency_ms",
+          "value": "35",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "request_rate",
+          "value": "380",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "queue_depth",
+          "value": "5",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "disk_utilization",
+          "value": "42",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_version",
+          "value": "1.4.2",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_status",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "p95_latency_ms",
+          "value": "2100",
+          "observed_at": "2026-09-28T07:58:15.380896Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.deployment",
+          "value": "{'version': '1.4.2', 'status': 'healthy'}",
+          "observed_at": "2026-09-28T07:58:15.381021Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.db_pool",
+          "value": "{'used': 96, 'limit': 100, 'status': 'ok'}",
+          "observed_at": "2026-09-28T07:58:15.381021Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.redis",
+          "value": "{'status': 'degraded'}",
+          "observed_at": "2026-09-28T07:58:15.381021Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.queue",
+          "value": "{'depth': 5, 'status': 'ok'}",
+          "observed_at": "2026-09-28T07:58:15.381021Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.disk",
+          "value": "{'utilization_percent': 42, 'status': 'ok'}",
+          "observed_at": "2026-09-28T07:58:15.381021Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "state.status",
+          "value": "degraded",
+          "observed_at": "2026-09-28T07:58:15.381021Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:05+00:00 WARN cache hit ratio dropping",
+          "observed_at": "2026-09-28T07:58:15.381111Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:06+00:00 WARN thundering herd on hot keys, backend load rising",
+          "observed_at": "2026-09-28T07:58:15.381111Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:07+00:00 WARN database load increasing",
+          "observed_at": "2026-09-28T07:58:15.381111Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "log",
+          "value": "2024-05-14T10:00:08+00:00 ERROR payment request timed out",
+          "observed_at": "2026-09-28T07:58:15.381111Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections",
+          "value": "96/100",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms",
+          "value": "640",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate",
+          "value": "12.0",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "cpu",
+          "value": "84.0",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "memory",
+          "value": "70.0",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "redis_health",
+          "value": "degraded",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "dependency_latency_ms",
+          "value": "35",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "request_rate",
+          "value": "380",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "queue_depth",
+          "value": "5",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "disk_utilization",
+          "value": "42",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_version",
+          "value": "1.4.2",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "deployment_status",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "p95_latency_ms",
+          "value": "2100",
+          "observed_at": "2026-09-28T07:58:15.381703Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "service_status_post_action",
+          "value": "healthy",
+          "observed_at": "2026-09-28T07:58:15.382158Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "http_5xx_rate_post_action",
+          "value": "0.2",
+          "observed_at": "2026-09-28T07:58:15.382158Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_connections_post_action",
+          "value": "20",
+          "observed_at": "2026-09-28T07:58:15.382158Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        },
+        {
+          "signal": "db_latency_ms_post_action",
+          "value": "18",
+          "observed_at": "2026-09-28T07:58:15.382158Z",
+          "provenance": "observed",
+          "stance": "neutral",
+          "refutes_memory": null
+        }
+      ],
+      "hypotheses": [
+        {
+          "statement": "cache stampede",
+          "status": "selected",
+          "confidence": 0.95,
+          "supporting": [
+            "cache degraded",
+            "DB connections very high (96/100)",
+            "DB latency high (640ms)",
+            "cpu high (84.0%)",
+            "elevated request rate (380) with degraded cache",
+            "cache-stampede signatures in logs"
+          ],
+          "contradicting": []
+        },
+        {
+          "statement": "DB pool exhaustion",
+          "status": "supported",
+          "confidence": 0.75,
+          "supporting": [
+            "db_connections saturated (96/100)",
+            "db_latency very high (640ms)",
+            "5xx elevated (12.0%)",
+            "hindsight recalls a similar DB pool incident"
+          ],
+          "contradicting": [
+            "cpu high (84.0%), suggests load rather than pool",
+            "request rate elevated (380), not isolated pool pressure"
+          ]
+        },
+        {
+          "statement": "redis failure",
+          "status": "considered",
+          "confidence": 0.28,
+          "supporting": [
+            "redis degraded",
+            "hindsight recalls a redis incident"
+          ],
+          "contradicting": [
+            "DB nearly saturated, less typical of pure redis failure"
+          ]
+        },
+        {
+          "statement": "traffic spike",
+          "status": "rejected",
+          "confidence": 0.18,
+          "supporting": [
+            "request rate elevated (380)",
+            "hindsight recalls a traffic-spike incident"
+          ],
+          "contradicting": [
+            "queue depth normal (5)"
+          ]
+        },
+        {
+          "statement": "bad deployment",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [
+            "5xx elevated (12.0%)",
+            "hindsight recalls a bad-deployment incident"
+          ],
+          "contradicting": [
+            "no recent deployment (v1.4.2 healthy)"
+          ]
+        },
+        {
+          "statement": "memory leak",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [
+            "moderate 5xx elevation (12.0%)",
+            "hindsight recalls a memory-leak incident"
+          ],
+          "contradicting": [
+            "memory normal (70.0%)"
+          ]
+        },
+        {
+          "statement": "dependency timeout",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "dependency latency normal (35ms)"
+          ]
+        },
+        {
+          "statement": "disk exhaustion",
+          "status": "rejected",
+          "confidence": 0.05,
+          "supporting": [],
+          "contradicting": [
+            "disk utilization normal (42.0%)"
+          ]
+        }
+      ],
+      "investigation": [
+        {
+          "step_id": "step-1",
+          "started_at": "2026-09-28T07:58:15.380841Z",
+          "tool": "get_health",
+          "target": null,
+          "result_summary": "service status=degraded",
+          "result_refs": [
+            "service_status"
+          ]
+        },
+        {
+          "step_id": "step-2",
+          "started_at": "2026-09-28T07:58:15.380957Z",
+          "tool": "get_metrics",
+          "target": null,
+          "result_summary": "5xx=12.0 cpu=84.0 mem=70.0 db=96/100 dblat=640ms",
+          "result_refs": [
+            "db_connections",
+            "db_latency_ms",
+            "http_5xx_rate",
+            "cpu",
+            "memory",
+            "redis_health",
+            "dependency_latency_ms",
+            "request_rate"
+          ]
+        },
+        {
+          "step_id": "step-3",
+          "started_at": "2026-09-28T07:58:15.381063Z",
+          "tool": "get_state",
+          "target": null,
+          "result_summary": "state=degraded",
+          "result_refs": [
+            "state.deployment",
+            "state.db_pool",
+            "state.redis",
+            "state.queue",
+            "state.disk",
+            "state.status"
+          ]
+        },
+        {
+          "step_id": "step-4",
+          "started_at": "2026-09-28T07:58:15.381133Z",
+          "tool": "get_logs",
+          "target": null,
+          "result_summary": "8 log lines",
+          "result_refs": [
+            "log",
+            "log",
+            "log",
+            "log"
+          ]
+        },
+        {
+          "step_id": "step-5",
+          "started_at": "2026-09-28T07:58:15.381754Z",
+          "tool": "get_snapshot",
+          "target": null,
+          "result_summary": "snapshot captured, 5xx=12.0",
+          "result_refs": [
+            "db_connections",
+            "db_latency_ms",
+            "http_5xx_rate",
+            "cpu",
+            "memory",
+            "redis_health",
+            "dependency_latency_ms",
+            "request_rate"
+          ]
+        }
+      ],
+      "actions": [
+        {
+          "action_id": "action-1",
+          "action": "restart_service",
+          "target": "payment-api",
+          "parameters": {},
+          "status": "executed",
+          "executed_at": "2026-09-28T07:58:15.382186Z",
+          "result": "payment-api restarted, runtime state cleared | 5xx 12.0->0.2 | resolved"
+        }
+      ],
+      "verification": {
+        "metrics_before": {
+          "cpu": 84.0,
+          "memory": 70.0,
+          "db_connections": 96.0,
+          "db_latency_ms": 640.0,
+          "http_5xx_rate": 12.0,
+          "p50_latency_ms": 450.0,
+          "p95_latency_ms": 2100.0,
+          "dependency_latency_ms": 35.0,
+          "request_rate": 380.0,
+          "queue_depth": 5.0,
+          "disk_utilization": 42.0
+        },
+        "metrics_after": {
+          "cpu": 35.2,
+          "memory": 47.8,
+          "db_connections": 20.0,
+          "db_latency_ms": 18.0,
+          "http_5xx_rate": 0.2,
+          "p50_latency_ms": 80.0,
+          "p95_latency_ms": 125.0,
+          "dependency_latency_ms": 35.0,
+          "request_rate": 120.0,
+          "queue_depth": 5.0,
+          "disk_utilization": 42.0
+        },
+        "improved": true,
+        "status": "resolved"
+      },
+      "learning": {
+        "outcome": "resolved",
+        "successful_actions": [
+          "restart_service"
+        ],
+        "failed_actions": [],
+        "lesson": "service_status=degraded; db_connections=96/100; db_latency_ms=640; http_5xx_rate=12.0; cpu=84.0; memory=70.0; redis_health=degraded; dependency_latency_ms=35 indicated cache stampede. Executing restart_service restored service health (5xx < 1%, status healthy).",
+        "suitable_for_hindsight": true
+      }
+    }
+  },
+  "stage2_recalled_memory_ids": [
+    "eval-learning-stage1-00"
+  ],
+  "stage2_hypothesis_statuses": {
+    "cache stampede": "selected",
+    "DB pool exhaustion": "supported",
+    "redis failure": "considered",
+    "traffic spike": "rejected",
+    "bad deployment": "rejected",
+    "memory leak": "rejected",
+    "dependency timeout": "rejected",
+    "disk exhaustion": "rejected"
+  }
+}
